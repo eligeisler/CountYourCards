@@ -4,19 +4,18 @@
              x:Class="CountYourCards.Views.MainPage">
 
     <ScrollView>
-        
-        <VerticalStackLayout
-            BackgroundColor="DarkGoldenrod"
+
+        <VerticalStackLayout  
             Padding="30,0"
             Spacing="25">
-            
-            <Image
-                />
 
             <Label
                 Text="Servas Tiroler-Kartenspieler!"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
+            <Image 
+                
+                />
 
             <Label
                 Text="Willkommen zum ulitmativen Zählautomat für verschiedene Tiroler Kartenspiele!"
@@ -24,11 +23,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                HorizontalOptions="Fill" />
+           
         </VerticalStackLayout>
     </ScrollView>
 
