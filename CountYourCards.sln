@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountYourCards", "CountYourCards\CountYourCards.csproj", "{A9EDE690-4A36-43E2-8474-DCBF0D482EF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9EDE690-4A36-43E2-8474-DCBF0D482EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9EDE690-4A36-43E2-8474-DCBF0D482EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9EDE690-4A36-43E2-8474-DCBF0D482EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9EDE690-4A36-43E2-8474-DCBF0D482EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15A8EA51-3364-40FD-8728-02B5A4792905}
+	EndGlobalSection
+EndGlobal
