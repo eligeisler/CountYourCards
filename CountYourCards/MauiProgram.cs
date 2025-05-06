@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CountYourCards.ViewModels;
+using CountYourCards.Views;
+using CountYourCards.Services;
+using Microsoft.Extensions.Logging;
 
 namespace CountYourCards;
 
@@ -18,7 +21,9 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+		builder.Services.AddTransient<Formular>();
+        builder.Services.AddTransient<FormularViewModel>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

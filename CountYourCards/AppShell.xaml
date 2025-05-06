@@ -11,5 +11,8 @@
         Title="Home"
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
-
+    <ShellContent
+        Title="Formular"
+        ContentTemplate="{DataTemplate views:Formular}"
+        Route="Formular" />
 </Shell>

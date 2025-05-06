@@ -3,10 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CountYourCards.Views.Formular"
              Title="Formular">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <Grid RowDefinitions="2*,1*,1*,2*" ColumnDefinitions="3*,7*">
+            <Label
+        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+        Text="Registrierungsformular"
+        FontSize="20"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        TextColor="MediumSeaGreen"
+        FontAttributes="Bold" />
+
+
+            <Label  Text="Name"
+         Grid.Row="1" Grid.Column="0"
+         VerticalOptions="Center" 
+         HorizontalOptions="End" 
+         FontAttributes="Bold"   />
+
+            <Entry
+        Text="{Binding Name}"
+        Placeholder="Geben sie Ihren Namen ein"
+        TextColor="MediumSeaGreen"
+        Grid.Row="1" Grid.Column="1"
+        VerticalOptions="Center"
+        HorizontalOptions="Start"
+        Margin="10,0,0,0"
+    />
+            <Label
+         Text="Passwort"
+         Grid.Row="2" Grid.Column="0"
+         VerticalOptions="Center" 
+         HorizontalOptions="End" 
+         FontAttributes="Bold" 
+        />
+            <Entry
+        Text="{Binding Password}"
+          IsPassword="True"
+          Placeholder="Geben Sie Ihr Passwort ein"
+          Grid.Row="2" Grid.Column="1"
+          VerticalOptions="Center"
+          HorizontalOptions="Start"
+          Margin="10,0,0,0"
+        />
+           
+            <HorizontalStackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" >
+                <Button Text="Login" VerticalOptions="Center" 
+         Margin ="0,0,15,0" Command="{Binding LoginCommand}" 
+    />
+                <Button Text="Delete" VerticalOptions="Center"
+         Margin="0,0,15,0" Command="{Binding DeleteCommand}"
+                />
+                <Button Text="Create" VerticalOptions="Center"
+         Margin="0,0,15,0" Command="{Binding CreateCommand}"
+                />
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
+
 </ContentPage>
