@@ -25,7 +25,10 @@ public static class MauiProgram
 #endif
 		builder.Services.AddTransient<Formular>();
         builder.Services.AddTransient<FormularViewModel>();
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<MainPageViewModel>();
 
-        return builder.Build();
+
+		return builder.Build();
 	}
 }
