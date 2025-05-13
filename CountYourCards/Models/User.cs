@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace CountYourCards.Models
 {
     public class User {
-
+        public List<Spielstand> Spielstände = new List<Spielstand>();
         public int UserId { get; set; }
         public string Name { get; set; }
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
         public User(string name, string password) {
             this.Name = name;
-            this.password = password;
+            this.Password = password;
            
 
         }
