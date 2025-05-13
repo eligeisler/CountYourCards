@@ -14,5 +14,5 @@
     <ShellContent
         Title="Formular"
         ContentTemplate="{DataTemplate views:Formular}"
-        Route="JumpToFormular" />
+        Route="Formular" />
 </Shell>

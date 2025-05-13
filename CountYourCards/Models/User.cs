@@ -14,7 +14,6 @@ namespace CountYourCards.Models
         public string password { get; set; }
 
         public User(string name, string password) {
-
             this.Name = name;
             this.password = password;
            
