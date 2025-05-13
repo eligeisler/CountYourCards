@@ -28,7 +28,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<MainPageViewModel>();
 
+        builder.Services.AddDbContext<DbManagerSQLite>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
