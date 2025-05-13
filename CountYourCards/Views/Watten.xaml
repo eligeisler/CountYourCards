@@ -46,28 +46,66 @@
                 Command="{Binding StartCommand}"
                 BackgroundColor="Maroon"
             />
-            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" RowDefinitions="2*,1*,1*,1*,1*,1*,1*" ColumnDefinitions="1*,1*">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" RowDefinitions="2*,1*,1*,1*,1*,1*,1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*">
                 <Label
                       Text="ES |"
-                      Grid.Row="0" Grid.Column="0"
+                      Grid.Row="0" Grid.Column="2"
                       HorizontalOptions="End"
                       VerticalOptions="Center"
                       FontSize="20"
                       FontAttributes="Bold"
-                      
-                      BackgroundColor="Yellow"
+                      BackgroundColor="OrangeRed"
                   />
                 <Label
                     Text="MIA"
-                    Grid.Row="0" Grid.Column="1"
+                    Grid.Row="0" Grid.Column="3"
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
                     FontSize="20"
                     FontAttributes="Bold"
-                  
-                    Background="Yellow"
-                   
+                    Background="OrangeRed"
                     />
+                <Button
+                    Text="+2"
+                    Command="{Binding ZweiCommand}"
+                    Grid.Row="0" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                   />
+                <Button
+                    Text="+3"
+                    Command="{Binding DreiCommand}"
+                    Grid.Row="0" Grid.Column="1"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+4"
+                    Command="{Binding VierCommand}"
+                    Grid.Row="1" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+5"
+                    Command="{Binding FuenfCommand}"
+                    Grid.Row="1" Grid.Column="1"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+6"
+                    Command="{Binding SechsCommand}"
+                    Grid.Row="2" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                     />   
+
 
             </Grid>
 
