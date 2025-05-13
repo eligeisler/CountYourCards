@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CountYourCards.Models;
 using CountYourCards.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,29 +24,47 @@ namespace CountYourCards.ViewModels
         }
             [RelayCommand]
         public async Task Login() {
-            User user = new() {
-                UserId = 0,
-                Name = this.Name,
-                password = this.Password
-            };
-            this._dbManagerSQLite.Users.Add(user);
-            await this._dbManagerSQLite.SaveChangesAsync();
+            
+            User? u= await this._dbManagerSQLite.Users.FirstOrDefaultAsync(u => u.Name ==this.Name && u.Password==this.Password );
+            if(u is null) {
+                await Shell.Current.DisplayAlert("Kein User gefunden", "Password oder Name falsch", "OK");
+            }
+            else {
+                Clearfields();
+
+            }
+            
         }
         [RelayCommand]
         public async Task Delete() {
-            this.Name = "";
-            this.Password = "";
-
+            Clearfields();
+            
         }
         [RelayCommand]
         public async Task Create() {
             User user = new() {
                 UserId = 0,
                 Name = this.Name,
-                password = this.Password
+                Password = this.Password
             };
+            /*
+            Spielstand sp = new Spielstand() {
+                SpielstandId = 1,
+                Team1 = 2,
+                Team2 = 4,
+                User = user
+            };
+            user.Spielstände.Add(sp);
+            this._dbManagerSQLite.Spielstände.Add(sp);*/
+           
             this._dbManagerSQLite.Users.Add(user);
             await this._dbManagerSQLite.SaveChangesAsync();
+            Clearfields();
+        }
+
+        private void Clearfields() {
+            this.Name = "";
+            this.Password = "";
         }
 
      } 
