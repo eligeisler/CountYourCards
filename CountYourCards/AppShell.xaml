@@ -15,4 +15,8 @@
         Title="Formular"
         ContentTemplate="{DataTemplate views:Formular}"
         Route="Formular" />
+    <ShellContent
+        Title="Watten"
+        ContentTemplate="{DataTemplate views:Watten}"
+        Route="Watten" />
 </Shell>

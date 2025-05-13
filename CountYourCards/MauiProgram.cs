@@ -27,6 +27,8 @@ public static class MauiProgram
         builder.Services.AddTransient<FormularViewModel>();
 		builder.Services.AddTransient<MainPage>();
 		builder.Services.AddTransient<MainPageViewModel>();
+		builder.Services.AddTransient<Watten>();
+		builder.Services.AddTransient<WattenViewModel>();
 
         builder.Services.AddDbContext<DbManagerSQLite>();
 
