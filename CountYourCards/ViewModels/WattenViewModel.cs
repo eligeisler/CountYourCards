@@ -10,5 +10,6 @@ namespace CountYourCards.ViewModels
     public partial class WattenViewModel : ObservableObject 
     {
 
+
     }
 }
