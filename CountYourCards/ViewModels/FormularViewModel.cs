@@ -25,7 +25,8 @@ namespace CountYourCards.ViewModels
             [RelayCommand]
         public async Task Login() {
             
-            User? u= await this._dbManagerSQLite.Users.FirstOrDefaultAsync(u => u.Name ==this.Name && u.Password==this.Password );
+            User? u= await this._dbManagerSQLite.Users.FirstOrDefaultAsync(u => u.Name ==this.Name &&
+            u.Password==this.Password );
             if(u is null) {
                 await Shell.Current.DisplayAlert("Kein User gefunden", "Password oder Name falsch", "OK");
             }
