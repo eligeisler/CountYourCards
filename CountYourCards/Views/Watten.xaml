@@ -54,7 +54,7 @@
                       VerticalOptions="Center"
                       FontSize="20"
                       FontAttributes="Bold"
-                      BackgroundColor="OrangeRed"
+                      
                   />
                 <Label
                     Text="MIA"
@@ -63,7 +63,7 @@
                     VerticalOptions="Center"
                     FontSize="20"
                     FontAttributes="Bold"
-                    Background="OrangeRed"
+                    
                     />
                 <Button
                     Text="+2"
@@ -104,7 +104,47 @@
                     VerticalOptions="Center"
                     Margin="10"
                     BackgroundColor="Maroon"
-                     />   
+                     />
+                <Button
+                    Text="+7"
+                    Command="{Binding SiebenCommand}"
+                    Grid.Row="2" Grid.Column="1"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+8"
+                    Command="{Binding AchtCommand}"
+                    Grid.Row="3" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+9"
+                    Command="{Binding NeunCommand}"
+                    Grid.Row="3" Grid.Column="1"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+10"
+                    Command="{Binding ZehnCommand}"
+                    Grid.Row="4" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+11"
+                    Command="{Binding ElfCommand}"
+                    Grid.Row="4" Grid.Column="1"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />  
 
 
             </Grid>
