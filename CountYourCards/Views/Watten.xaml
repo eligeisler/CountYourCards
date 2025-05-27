@@ -15,7 +15,7 @@
                 FontAttributes="Bold"
             />
             <Entry
-                Text="{Binding Team1}"
+                Text="{Binding TeamName1}"
                 Placeholder="Teamname"
                 Grid.Row="0" Grid.Column="1"
                 VerticalOptions="Center"
@@ -30,7 +30,7 @@
                 FontAttributes="Bold"
             />
             <Entry
-                Text="{Binding Team2}"
+                Text="{Binding TeamName2}"
                 Placeholder="Teamname"
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
@@ -128,6 +128,7 @@
                     Margin="10"
                     BackgroundColor="Maroon"
                     />
+                
                 <Button
                     Text="+8"
                     Command="{Binding AchtCommand}"

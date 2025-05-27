@@ -10,6 +10,7 @@ namespace CountYourCards.Models {
         public int Team1 { get; set; }
         public int Team2 { get; set; }
         public User User { get; set; }
+        
 
 
     }
