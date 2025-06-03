@@ -8,19 +8,39 @@
         <Grid RowDefinitions="1*, 1*, 4*, 2*" ColumnDefinitions="1*, 1*, 1*,1*">
             <Label
                 Grid.Row="0" Grid.Column="0"
-                Text="Spieler 1 / Team 1 = "
+                Text="User= "
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"
+                Margin="0,0,0,100"
+            />
+            <Entry
+                Text="{Binding Name}"
+                Placeholder="Teamname"
+                Grid.Row="0" Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                                Margin="0,0,0,100"
+
+            /> <Label
+                Grid.Row="0" Grid.Column="0"
+                Text="Passwort= "
                 HorizontalOptions="End"
                 VerticalOptions="Center"
                 FontSize="15"
                 FontAttributes="Bold"
             />
-            <Entry
-                Text="{Binding TeamName1}"
-                Placeholder="Teamname"
+             <Entry
+                Text="{Binding Password}"
+                Placeholder="Password"
                 Grid.Row="0" Grid.Column="1"
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
-            />
+                
+
+/>
+
             <Label
                 Grid.Row="0" Grid.Column="2"
                 Text="Spieler 2 / Team 2 = "
