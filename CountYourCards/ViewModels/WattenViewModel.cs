@@ -15,6 +15,11 @@ namespace CountYourCards.ViewModels
     public partial class WattenViewModel : ObservableObject
     {
         [ObservableProperty]
+        private string _name;
+        [ObservableProperty]
+        private string _password;
+
+        [ObservableProperty]
         private bool _isTeam1Strikethrough;
 
         [ObservableProperty]
@@ -195,16 +200,20 @@ namespace CountYourCards.ViewModels
         }
         [RelayCommand]
         public async Task Speichern() {
-
+            User user = new() {
+                UserId = 0,
+                Name = this.Name,
+                Password = this.Password
+            };
             var spielstand = new Spielstand {
                 Team1= Team1Total,
                 Team2 = Team2Total,
-                SpielstandId=0
+                SpielstandId=0,
+                User=user
             };
             
-            //user.Spielstände.Add(sp);
+            user.Spielstände.Add(spielstand);
             this._dbManagerSQLite.Spielstände.Add(spielstand);
-            await _dbManagerSQLite.SaveChangesAsync();
         }
         public async Task UndoTeam1()
         {
