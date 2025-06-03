@@ -37,7 +37,7 @@
                 Grid.Row="0" Grid.Column="4"
             />
             <Button 
-                Text="Spiel starten"
+                Text="Spiel starten/neustarten"
                 VerticalOptions="Center"
                 Grid.ColumnSpan="4"
                 Grid.Row="1"
@@ -67,6 +67,7 @@
                     FontAttributes="Bold"
                     
                     />
+
                 <Border Grid.Row="0" Grid.RowSpan="8" Grid.Column="3"
                     Stroke="Gray"
                     StrokeThickness="1"
@@ -79,7 +80,7 @@
                     StrokeThickness="1"
                     VerticalOptions="End"
                     HorizontalOptions="Fill"
-                    />   
+                    />
                 <Button
                     Text="+2"
                     Command="{Binding ZweiCommand}"
@@ -241,12 +242,31 @@
                     Margin="10"
                     BackgroundColor="Maroon"
                     />
-                <Entry
-                    Text="{Binding team1Pos}"
-                    Grid.Row="1" Grid.Column="2"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    />
+                
+
+                <CollectionView ItemsSource="{Binding Team1Position}"
+                Grid.Row="1" Grid.Column="2" Grid.RowSpan="6"
+                ItemsLayout="VerticalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}" Margin ="50, 0, 0, 0" FontSize="18"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView ItemsSource="{Binding Team2Position}"
+                Grid.Row="1" Grid.Column="3" Grid.RowSpan="6"
+                ItemsLayout="VerticalList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}" Margin="50, 0 , 0,0 " FontSize="18"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+
+
 
 
             </Grid>
