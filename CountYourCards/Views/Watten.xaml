@@ -48,9 +48,10 @@
             />
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" RowDefinitions="2*,1*,1*,1*,1*,1*,1*" ColumnDefinitions="1*,1*,1*,1*,1*,1*">
                 <Label
-                      Text="ES |"
+                      Text="ES"
+                      Margin="5"
                       Grid.Row="0" Grid.Column="2"
-                      HorizontalOptions="End"
+                      HorizontalOptions="Center"
                       VerticalOptions="Center"
                       FontSize="20"
                       FontAttributes="Bold"
@@ -58,25 +59,27 @@
                   />
                 <Label
                     Text="MIA"
+                    Margin="5"
                     Grid.Row="0" Grid.Column="3"
-                    HorizontalOptions="Start"
+                    HorizontalOptions="Center"
                     VerticalOptions="Center"
                     FontSize="20"
                     FontAttributes="Bold"
                     
                     />
-                <Label 
-                    Text="{Binding Team1Punkte}"
-                    Grid.Row="1" Grid.Column="2"
-                    VerticalOptions="Center"
-                    Margin="10"
-                    BackgroundColor="Maroon"/>
-                <Label 
-                    Text="{Binding Team2Punkte}"
-                    Grid.Row="1" Grid.Column="2"
-                    VerticalOptions="Center"
-                    Margin="10"
-                    BackgroundColor="Maroon"/>  
+                <Border Grid.Row="0" Grid.RowSpan="8" Grid.Column="3"
+                    Stroke="Gray"
+                    StrokeThickness="1"
+                    
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Start"
+                    />
+                <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                    Stroke="Gray"
+                    StrokeThickness="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="Fill"
+                    />   
                 <Button
                     Text="+2"
                     Command="{Binding ZweiCommand}"
@@ -157,7 +160,93 @@
                     VerticalOptions="Center"
                     Margin="10"
                     BackgroundColor="Maroon"
-                    />  
+                    />
+                <Button
+                    Text="+2"
+                    Command="{Binding RechtsZweiCommand}"
+                    Grid.Row="0" Grid.Column="4"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                     />
+                <Button
+                    Text="+3"
+                    Command="{Binding RechtsDreiCommand}"
+                    Grid.Row="0" Grid.Column="5"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+4"
+                    Command="{Binding RechtsVierCommand}"
+                    Grid.Row="1" Grid.Column="4"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+5"
+                    Command="{Binding RechtsFuenfCommand}"
+                    Grid.Row="1" Grid.Column="5"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+6"
+                    Command="{Binding RechtsSechsCommand}"
+                    Grid.Row="2" Grid.Column="4"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+7"
+                    Command="{Binding RechtsSiebenCommand}"
+                    Grid.Row="2" Grid.Column="5"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+8"
+                    Command="{Binding RechtsAchtCommand}"
+                    Grid.Row="3" Grid.Column="4"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+9"
+                    Command="{Binding RechtsNeunCommand}"
+                    Grid.Row="3" Grid.Column="5"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+10"
+                    Command="{Binding RechtsZehnCommand}"
+                    Grid.Row="4" Grid.Column="4"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Button
+                    Text="+11"
+                    Command="{Binding RechtsElfCommand}"
+                    Grid.Row="4" Grid.Column="5"
+                    VerticalOptions="Center"
+                    Margin="10"
+                    BackgroundColor="Maroon"
+                    />
+                <Entry
+                    Text="{Binding team1Pos}"
+                    Grid.Row="1" Grid.Column="2"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    />
 
 
             </Grid>
