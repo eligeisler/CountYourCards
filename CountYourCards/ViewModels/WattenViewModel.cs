@@ -15,11 +15,19 @@ namespace CountYourCards.ViewModels
     public partial class WattenViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _teamName1 = "";
+        private bool _isTeam1Strikethrough;
 
         [ObservableProperty]
+        private bool _isTeam2Strikethrough;
+        [ObservableProperty]
+        private string _teamName1 = "";
+        
+        [ObservableProperty]
         private string _teamName2 = "";
-
+        [ObservableProperty]
+        private string _team1Points = "0";
+        [ObservableProperty]
+        private string _team2Points = "0";
         private ObservableCollection<int> _team1Pos = new ObservableCollection<int>(new int[6]);
         private ObservableCollection<int> _team2Pos = new ObservableCollection<int>(new int[6]);
 
@@ -65,6 +73,7 @@ namespace CountYourCards.ViewModels
                 {
                     _team1Pos[i] = points;
                     UpdateTeam1Display();
+                    CheckStrikethrough();
                     break;
                 }
             }
@@ -78,6 +87,7 @@ namespace CountYourCards.ViewModels
                 {
                     _team2Pos[i] = points;
                     UpdateTeam2Display();
+                    CheckStrikethrough();
                     break;
                 }
             }
@@ -98,7 +108,7 @@ namespace CountYourCards.ViewModels
 
         // Team 1 Commands
         [RelayCommand]
-        public async Task Zwei() => AddPointsToTeam1(2);
+        public async Task Zwei()=> AddPointsToTeam1(2);
 
         [RelayCommand]
         public async Task Drei() => AddPointsToTeam1(3);
@@ -178,8 +188,24 @@ namespace CountYourCards.ViewModels
             }
             UpdateTeam2Display();
         }
-
         [RelayCommand]
+        private void CheckStrikethrough() {
+            _isTeam1Strikethrough = Team1Total >= 9;
+            _isTeam2Strikethrough = Team2Total >= 9;
+        }
+        [RelayCommand]
+        public async Task Speichern() {
+
+            var spielstand = new Spielstand {
+                Team1= Team1Total,
+                Team2 = Team2Total,
+                SpielstandId=0
+            };
+            
+            //user.Spielstände.Add(sp);
+            this._dbManagerSQLite.Spielstände.Add(spielstand);
+            await _dbManagerSQLite.SaveChangesAsync();
+        }
         public async Task UndoTeam1()
         {
             for (int i = _team1Pos.Count - 1; i >= 0; i--)
@@ -206,9 +232,11 @@ namespace CountYourCards.ViewModels
                 }
             }
         }
+   
 
         // Properties für Gesamtpunkte (optional)
         public int Team1Total => _team1Pos.Sum();
         public int Team2Total => _team2Pos.Sum();
     }
+
 }
