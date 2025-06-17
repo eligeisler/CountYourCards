@@ -41,21 +41,8 @@
 
 />
 
-            <Label
-                Grid.Row="0" Grid.Column="2"
-                Text="Spieler 2 / Team 2 = "
-                HorizontalOptions="End"
-                VerticalOptions="Center"
-                FontSize="15"
-                FontAttributes="Bold"
-            />
-            <Entry
-                Text="{Binding TeamName2}"
-                Placeholder="Teamname"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                Grid.Row="0" Grid.Column="4"
-            />
+        
+            
             <Button 
                 Text="Spiel starten/neustarten"
                 VerticalOptions="Center"
@@ -100,6 +87,21 @@
                     StrokeThickness="1"
                     VerticalOptions="End"
                     HorizontalOptions="Fill"
+                    />
+                <Border
+                    Grid.Row="1" Grid.Column="2" Grid.RowSpan="3"
+                    Stroke="Black"
+                    StrokeThickness="1"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding Visible1}"
+                    />
+                <Border Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"
+                    Stroke="Black"
+                    StrokeThickness="1"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding Visible2}"
                     />
                 <Button
                     Text="+2"
@@ -297,14 +299,14 @@
                 
                 <Button
                     Text="Spielstand speichern"
-                    Command="{Binding Speichern}"
+                    Command="{Binding SpeichernCommand}"
                     Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     Margin="20"
                     BackgroundColor="Maroon"
                     />
 
-                <CollectionView ItemsSource="{Binding Team1Position}"
+                <CollectionView ItemsSource="{Binding Team1Pos}"
                 Grid.Row="1" Grid.Column="2" Grid.RowSpan="6"
                 ItemsLayout="VerticalList">
                     <CollectionView.ItemTemplate>
@@ -316,7 +318,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <CollectionView ItemsSource="{Binding Team2Position}"
+                <CollectionView ItemsSource="{Binding Team2Pos}"
                 Grid.Row="1" Grid.Column="3" Grid.RowSpan="6"
                 ItemsLayout="VerticalList">
                     <CollectionView.ItemTemplate>

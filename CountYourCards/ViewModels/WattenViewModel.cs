@@ -20,95 +20,69 @@ namespace CountYourCards.ViewModels
         private string _password;
 
         [ObservableProperty]
-        private bool _isTeam1Strikethrough;
-
-        [ObservableProperty]
-        private bool _isTeam2Strikethrough;
-        [ObservableProperty]
         private string _teamName1 = "";
         
         [ObservableProperty]
         private string _teamName2 = "";
-        [ObservableProperty]
-        private string _team1Points = "0";
-        [ObservableProperty]
-        private string _team2Points = "0";
-        private ObservableCollection<int> _team1Pos = new ObservableCollection<int>(new int[6]);
-        private ObservableCollection<int> _team2Pos = new ObservableCollection<int>(new int[6]);
 
         [ObservableProperty]
-        private ObservableCollection<int> _team1Position;
+        private bool _visible1;
+        [ObservableProperty]
+        private bool _visible2;
 
         [ObservableProperty]
-        private ObservableCollection<int> _team2Position;
+        private ObservableCollection<int> _team1Pos = new ObservableCollection<int>();
+        [ObservableProperty]
+        private ObservableCollection<int> _team2Pos = new ObservableCollection<int>();
 
         private readonly DbManagerSQLite _dbManagerSQLite;
 
         public WattenViewModel(DbManagerSQLite dbManagerSQLite)
         {
             this._dbManagerSQLite = dbManagerSQLite;
-
-            _team1Position = new ObservableCollection<int>();
-            _team2Position = new ObservableCollection<int>();
         }
 
-        private void UpdateTeam1Display()
+        private async Task AddPointsToTeam1(int points)
         {
-            _team1Position.Clear();
-            foreach (var value in _team1Pos.Where(x => x != 0))
+            Team1Pos.Add(points);
+
+            if(Team1Pos.Sum() >= 9)
             {
-                _team1Position.Add(value);
+                Visible1 = true;
+            }
+            if (Team1Pos.Sum() >= 11) { 
+                await Shell.Current.DisplayAlert("Spiel vorbei", "Team 1 hat gewonnen", "Schließen");
+                Team1Pos.Clear();
+                Team2Pos.Clear();
+                Visible2 = false;
+                Visible1 = false;
             }
         }
-
-        private void UpdateTeam2Display()
+        
+        private async Task AddPointsToTeam2(int points)
         {
-            _team2Position.Clear();
-            foreach (var value in _team2Pos.Where(x => x != 0))
+            Team2Pos.Add(points);
+            if (Team2Pos.Sum() >= 9)
             {
-                _team2Position.Add(value);
+                Visible2 = true;
             }
-        }
-
-        private void AddPointsToTeam1(int points)
-        {
-            for (int i = 0; i < _team1Pos.Count; i++)
+            if (Team2Pos.Sum() >= 11)
             {
-                if (_team1Pos[i] == 0)
-                {
-                    _team1Pos[i] = points;
-                    UpdateTeam1Display();
-                    CheckStrikethrough();
-                    break;
-                }
-            }
-        }
-
-        private void AddPointsToTeam2(int points)
-        {
-            for (int i = 0; i < _team2Pos.Count; i++)
-            {
-                if (_team2Pos[i] == 0)
-                {
-                    _team2Pos[i] = points;
-                    UpdateTeam2Display();
-                    CheckStrikethrough();
-                    break;
-                }
+                await Shell.Current.DisplayAlert("Spiel vorbei", "Team 2 hat gewonnen", "Schließen");
+                Team2Pos.Clear();
+                Team1Pos.Clear();
+                Visible1 = false;
+                Visible2 = false;
             }
         }
 
         [RelayCommand]
         public async Task Start()
         {
-            // Reset der Punktestände
-            for (int i = 0; i < _team1Pos.Count; i++)
-            {
-                _team1Pos[i] = 0;
-                _team2Pos[i] = 0;
-            }
-            UpdateTeam1Display();
-            UpdateTeam2Display();
+            Team1Pos.Clear();
+            Team2Pos.Clear();
+            Visible1 = false;
+            Visible2 = false;
         }
 
         // Team 1 Commands
@@ -173,31 +147,21 @@ namespace CountYourCards.ViewModels
         [RelayCommand]
         public async Task RechtsElf() => AddPointsToTeam2(11);
 
-        // Zusätzliche Hilfsmethoden
+     
         [RelayCommand]
         public async Task ResetTeam1()
         {
-            for (int i = 0; i < _team1Pos.Count; i++)
-            {
-                _team1Pos[i] = 0;
-            }
-            UpdateTeam1Display();
+            Team1Pos.Clear();
+            Visible1 = false;
         }
 
         [RelayCommand]
         public async Task ResetTeam2()
         {
-            for (int i = 0; i < _team2Pos.Count; i++)
-            {
-                _team2Pos[i] = 0;
-            }
-            UpdateTeam2Display();
+            Team2Pos.Clear();
+            Visible2 = false;
         }
-        [RelayCommand]
-        private void CheckStrikethrough() {
-            _isTeam1Strikethrough = Team1Total >= 9;
-            _isTeam2Strikethrough = Team2Total >= 9;
-        }
+        
         [RelayCommand]
         public async Task Speichern() {
             User user = new() {
@@ -206,8 +170,8 @@ namespace CountYourCards.ViewModels
                 Password = this.Password
             };
             var spielstand = new Spielstand {
-                Team1= Team1Total,
-                Team2 = Team2Total,
+                Team1= Team1Pos.Sum(),
+                Team2 = Team2Pos.Sum(),
                 SpielstandId=0,
                 User=user
             };
@@ -215,16 +179,21 @@ namespace CountYourCards.ViewModels
             user.Spielstände.Add(spielstand);
             this._dbManagerSQLite.Spielstände.Add(spielstand);
         }
+
+        [RelayCommand]
         public async Task UndoTeam1()
         {
             for (int i = _team1Pos.Count - 1; i >= 0; i--)
             {
                 if (_team1Pos[i] != 0)
                 {
-                    _team1Pos[i] = 0;
-                    UpdateTeam1Display();
+                    Team1Pos.RemoveAt(i);
                     break;
                 }
+            }
+            if (Team1Pos.Sum() < 9)
+            {
+                Visible1 = false;
             }
         }
 
@@ -235,17 +204,16 @@ namespace CountYourCards.ViewModels
             {
                 if (_team2Pos[i] != 0)
                 {
-                    _team2Pos[i] = 0;
-                    UpdateTeam2Display();
+                    Team2Pos.RemoveAt(i);
                     break;
                 }
             }
+            if (Team2Pos.Sum() < 9)
+            {
+                Visible2 = false;
+            }
         }
-   
 
-        // Properties für Gesamtpunkte (optional)
-        public int Team1Total => _team1Pos.Sum();
-        public int Team2Total => _team2Pos.Sum();
     }
 
 }
