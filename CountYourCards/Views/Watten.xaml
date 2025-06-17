@@ -299,7 +299,7 @@
                 
                 <Button
                     Text="Spielstand speichern"
-                    Command="{Binding SpeichernCommand}"
+                    Command="{Binding BlaCommand}"
                     Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     Margin="20"
