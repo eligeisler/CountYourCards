@@ -30,6 +30,7 @@ namespace CountYourCards.ViewModels
         [ObservableProperty]
         private bool _visible2;
 
+
         [ObservableProperty]
         private ObservableCollection<int> _team1Pos = new ObservableCollection<int>();
         [ObservableProperty]
@@ -79,12 +80,12 @@ namespace CountYourCards.ViewModels
         [RelayCommand]
         public async Task Start()
         {
-            /*
+            
             Team1Pos.Clear();
             Team2Pos.Clear();
             Visible1 = false;
             Visible2 = false;
-            */
+
             User user = new() {
                 UserId = 0,
                 Name = this.Name,
@@ -101,8 +102,10 @@ namespace CountYourCards.ViewModels
             this._dbManagerSQLite.Spielstände.Add(spielstand);
 
             await this._dbManagerSQLite.SaveChangesAsync();
+            
 
         }
+       
 
         // Team 1 Commands
         [RelayCommand]
@@ -181,28 +184,9 @@ namespace CountYourCards.ViewModels
             Visible2 = false;
         }
         
-        [RelayCommand]
-        public async Task Speichern() {
-            User user = new() {
-                UserId = 0,
-                Name = this.Name,
-                Password = this.Password
-            };
-            var spielstand = new Spielstand {
-                Team1= Team1Pos.Sum(),
-                Team2 = Team2Pos.Sum(),
-                SpielstandId=0,
-                User=user
-            };
-            
-            user.Spielstände.Add(spielstand);
-            this._dbManagerSQLite.Spielstände.Add(spielstand);
-        }
-        [RelayCommand]
-        public async Task Bla() {
-            Console.WriteLine();
-        }
-
+                
+        
+        
         [RelayCommand]
         public async Task UndoTeam1()
         {

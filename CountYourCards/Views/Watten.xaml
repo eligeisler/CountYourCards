@@ -40,11 +40,29 @@
                 
 
 />
-
-        
+            <Button
+                Text="Spielstand laden"
+                VerticalOptions="Center"
+                Grid.Row="0" Grid.Column="4"
+                HorizontalOptions="Center"
+                
+                Command="{Binding SelectCommand}"
+                BackgroundColor="Maroon"
+                Margin="0,0,0,100"
+                />
+            <Entry
+                Placeholder="Spielstand"
+                Grid.Row="0" Grid.Column="4"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                
+                />
             
+
+
+
             <Button 
-                Text="Spiel starten/neustarten"
+                Text="Spielstand speichern"
                 VerticalOptions="Center"
                 Grid.ColumnSpan="4"
                 Grid.Row="1"
@@ -296,15 +314,15 @@
                     Margin="10"
                     BackgroundColor="Maroon"
                     />
-                
                 <Button
-                    Text="Spielstand speichern"
-                    Command="{Binding BlaCommand}"
+                    Text="Spielstand Speichern"
+                    Command="{Binding SaveCommand}"
                     Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2"
                     VerticalOptions="Center" HorizontalOptions="Center"
-                    Margin="20"
+                    Margin=" 10"
                     BackgroundColor="Maroon"
                     />
+
 
                 <CollectionView ItemsSource="{Binding Team1Pos}"
                 Grid.Row="1" Grid.Column="2" Grid.RowSpan="6"
